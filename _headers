@@ -1,0 +1,107 @@
+# Netlify headers
+
+/*
+  Strict-Transport-Security: max-age=31536000
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()
+  Cross-Origin-Opener-Policy: same-origin-allow-popups
+  Content-Security-Policy: upgrade-insecure-requests; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'
+  Content-Security-Policy-Report-Only: default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://*.google-analytics.com https://www.clarity.ms https://*.clarity.ms https://elfsightcdn.com https://*.elfsight.com https://tally.so https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com https://*.elfsight.com https://elfsightcdn.com; font-src 'self' data: https://fonts.gstatic.com https://*.elfsight.com https://elfsightcdn.com; img-src 'self' data: blob: https:; media-src 'self' blob:; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://*.clarity.ms https://*.elfsight.com https://elfsightcdn.com https://tally.so; frame-src 'self' https://www.youtube-nocookie.com https://www.youtube.com https://open.spotify.com https://www.google.com https://tally.so https://calendly.com https://*.elfsight.com; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'
+
+/verif-deploiement*
+  X-Robots-Tag: noindex, nofollow
+
+/assets/video/*.mp4
+  Content-Type: video/mp4
+  Cache-Control: public, max-age=0, must-revalidate
+
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+# CSS, JS, effets, données et docs : toujours revalidés (ETag), pour qu'une mise à jour arrive chez tout le monde
+/assets/css/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/assets/js/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/assets/fx/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/assets/data/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/assets/docs/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Images et médias : cache long
+/assets/bamboo/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/certs/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/email/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/financing/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/handicap/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/hero/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/lieux/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/logo/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/media/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/og/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/orleans/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/partners/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/payment/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/photos/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/planning/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/popups/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/press/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/presskit/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/social/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/team/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/tep/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/villes/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/documents/*
+  Cache-Control: public, max-age=0, must-revalidate

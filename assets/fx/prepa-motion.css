@@ -1,0 +1,57 @@
+/* Animations de la page Prépa TEP. Actives seulement si JS présent et mouvement autorisé (classe pm-on posée par prepa-motion.js). */
+.pm-progress{position:fixed;top:0;left:0;height:3px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:linear-gradient(90deg,var(--white),color-mix(in srgb,var(--white) 40%,transparent));z-index:2000;pointer-events:none}
+
+/* Fond du hero : lueurs qui dérivent + projecteur qui suit la souris */
+.pm-on .hero{--mx:70%;--my:30%}
+.pm-orb{position:absolute;border-radius:50%;filter:blur(70px);pointer-events:none;opacity:.55;z-index:0;background:radial-gradient(circle,color-mix(in srgb,var(--white) 16%,transparent),transparent 65%)}
+.pm-orb.o1{width:520px;height:520px;top:-120px;left:-140px;animation:pmDrift1 16s ease-in-out infinite alternate}
+.pm-orb.o2{width:420px;height:420px;bottom:-140px;right:-80px;animation:pmDrift2 19s ease-in-out infinite alternate}
+.pm-spot-hero{position:absolute;inset:0;pointer-events:none;z-index:0;background:radial-gradient(420px circle at var(--mx) var(--my),color-mix(in srgb,var(--white) 7%,transparent),transparent 60%)}
+.pm-on .hero-content{position:relative;z-index:1}
+@keyframes pmDrift1{to{transform:translate(180px,90px) scale(1.2)}}
+@keyframes pmDrift2{to{transform:translate(-160px,-70px) scale(1.15)}}
+
+/* Titre du hero : mots qui montent depuis un masque */
+.pm-w{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.12em;margin-bottom:-.12em}
+.pm-wi{display:inline-block;transform:translateY(110%) rotate(3deg);animation:pmWord .9s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(.45s + var(--i)*70ms)}
+@keyframes pmWord{to{transform:none}}
+
+/* Pastille */
+.pm-badge{animation:pmBadge 3.2s ease-in-out infinite}
+@keyframes pmBadge{0%,100%{box-shadow:0 0 0 0 rgba(110,231,183,0)}50%{box-shadow:0 0 0 7px rgba(110,231,183,.14)}}
+
+/* Apparition en cascade */
+.pm-on .pm-st{opacity:0;transform:translateY(30px) scale(.97)}
+.pm-on .pm-st.pm-l{transform:translateX(-34px)}
+.pm-on .pm-st.pm-r{transform:translateX(34px)}
+.pm-on .pm-st.pm-in{opacity:1;transform:none;transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1);transition-delay:var(--pm-d,0ms)}
+.pm-on .pm-st.pm-done{transition:opacity .3s,transform .3s ease,border-color .3s,box-shadow .3s,background .2s;transition-delay:0ms}
+.pm-on .echec-card.pm-done:hover,.pm-on .tep-ex.pm-done:hover,.pm-on .programme-item.pm-done:hover{transform:translateY(-4px);position:relative;z-index:2}
+
+/* Titres de section : flou qui se dissipe */
+.pm-on .pm-title{opacity:0;filter:blur(10px);letter-spacing:.03em;transform:translateY(18px)}
+.pm-on .pm-title.pm-in{opacity:1;filter:none;letter-spacing:0;transform:none;transition:all 1s cubic-bezier(.2,.7,.2,1)}
+
+/* Projecteur sous le curseur sur les cartes */
+.pm-spot{position:relative;overflow:hidden}
+.pm-spot::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),color-mix(in srgb,var(--white) 9%,transparent),transparent 62%)}
+.pm-spot:hover::after{opacity:1}
+
+/* Ligne de la timeline qui se dessine */
+.pm-on .process-row::before{transform:scaleY(0);transform-origin:top;transition:transform 1.1s cubic-bezier(.4,.1,.2,1) .25s}
+.pm-on .process-row.pm-in::before{transform:scaleY(1)}
+.pm-on .process-row .process-marker{transform:scale(.4) rotate(-90deg);opacity:0}
+.pm-on .process-row.pm-in .process-marker{transform:none;opacity:1;transition:transform .8s cubic-bezier(.3,1.5,.5,1),opacity .4s;transition-delay:var(--pm-d,0ms)}
+.pm-on .process-row.pm-in .process-marker{animation:pmRing 1.6s .6s ease-out 1}
+@keyframes pmRing{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--white) 35%,transparent)}100%{box-shadow:0 0 0 22px transparent}}
+
+/* Offre mise en avant qui respire */
+.pm-on .tep-featured{animation:pmGlow 3.6s ease-in-out infinite}
+@keyframes pmGlow{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--white) 0%,transparent)}50%{box-shadow:0 0 38px 0 color-mix(in srgb,var(--white) 13%,transparent)}}
+
+/* Boutons : reflet qui traverse + effet magnétique */
+.pm-btn{position:relative;overflow:hidden;will-change:transform}
+.pm-btn::after{content:"";position:absolute;top:0;left:-70%;width:45%;height:100%;transform:skewX(-20deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);transition:left .7s ease;pointer-events:none}
+.pm-btn:hover::after{left:130%}
+
+@media (prefers-reduced-motion:reduce){.pm-progress,.pm-orb,.pm-spot-hero{display:none}}
